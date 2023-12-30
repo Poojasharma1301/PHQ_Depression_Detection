@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHQ-9 Depression Webapp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Navbar Starts -->
+  <!-- <section id="nav-bar"> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex; justify-content: center;">
+    <a class="navbar-brand font-weight-bold" href="#" style="color:rgb(255, 255, 255);">PHQ-9 DEPRESSION</a>
+  </nav>
+
+  <!--form starts-->
+  
+  <form action="{{ url_for('predict')}}" method="post" class="needs-validation" novalidate>
+    <h1>Over the last two weeks,how often have you been bothered by any of the following problems? </h1><br>
+    <div class="form-group form-inline">
+    
+      <label for="validationCustom01" class="form-label">Select Gender:</label><br>
+      <select class="form-select" name="gender" id="validationCustom01" required="required"
+        aria-label="Default select example">
+        <option selected disabled value="">--select-Gender--</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <div class="validation"></div>
+      </select>
+      <div class="invalid-feedback">
+        Please Enter Gender
+      </div>
+        <p for="age" required="required" for="validationCustom02">Please enter your age</p>
+        <input type="text" id="age" name="age" placeholder="Enter your age" style="width: min-content;">
+        <div class="invalid-feedback">
+          Please Enter your age
+        </div>
+        
+      </div>
+      <hr>
+     
+  
+    <label for="validationCustom03">Little interest or pleasure in doing things?</label><br>
+    <select name="question1" id="validationCustom03" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom04">Feeling down, depressed or hopeless?</label><br>
+    <select name="question2" id="validationCustom04" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom05">Trouble falling or staying asleep or sleeping too much?</label><br>
+    <select name="question3" id="validationCustom05" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom06">Feeling tired or having little energy?</label><br>
+    <select name="question4" id="validationCustom06" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom07">Poor appetite or overeadting?</label><br>
+    <select name="question5" id="validationCustom07" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom08">Feeling bad about yourself-or that you are a failure or have let yourself or your family down?</label><br>
+    <select name="question6" id="validationCustom08" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom09">Trouble concentrating on things , such as reading the newspaper or watching television?</label><br>
+    <select name="question7" id="validationCustom09" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom10">Moving or speaking so slowly that other people could have noticed. Or the opposite-being so figety or restless that you have been moving around a lot more than usual?</label><br>
+    <select name="question8" id="validationCustom10" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <label for="validationCustom11">Thoughts that you would be better off dead, orof hurting yourself?</label><br>
+    <select name="question9" id="validationCustom11" required="required">
+      <option selected disabled value="">--select score in range from 0 to 3 --</option>
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><div class="invalid-feedback">
+      Please Select Question score
+    </div><hr>
+
+    <br><br>
+        
+    <div class="text-center">
+      <button type="submit" class="btn btn-lg btn-info"
+        style="box-shadow: 0 4px 15px 0 rgb(91, 194, 189); background-image: linear-gradient(to right, rgb(91, 194, 189), #000000, #b3bdc0, rgb(91, 194, 189)); text-align: center;">
+        Submit
+      </button>
+    </div>      
+  </form>
+  <!--Form Ends-->
+  <br>
+  <h3 class="alert  text-center" role="alert" style="color: #fffefe;">{{ prediction_result }}<h3>
+      </div>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: sans-serif;
+          background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20211029/pngtree-gradient-geometric-vertical-background-for-instagram-stories-device-landing-page-web-image_914127.png) !important;
+          background-repeat: no-repeat !important;
+          background-size: 100% 100% !important;
+          
+        }
+        #nav-bar {
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+
+        .navbar {
+          background: rgb(91, 194, 189) !important;
+
+        }
+
+        .navbar-nav li {
+          padding: 0 10px;
+        }
+
+        .navbar-toggler {
+          outline: none !important;
+        }
+
+        body {
+          margin: auto;
+
+          font-family: 'Open Sans', sans-serif;
+        }
+
+        form h1 {
+          font-size: 20px;
+          background: rgb(91, 194, 189) none repeat scroll 0% 0%;
+          color: rgb(9, 9, 14);
+          padding: 22px 25px;
+          border-radius: 5px 5px 0px 0px;
+          margin: auto;
+          text-shadow: none;
+          text-align: center
+        }
+
+        form {
+          padding: 22px 25px;
+          border-radius: 5px;
+          max-width: 700px;
+          width: 100%;
+          margin: 5% auto;
+          background-color: #f1ebeb;
+          overflow: hidden;
+
+        }
+
+        p span {
+          color: #F00;
+        }
+
+
+        p {
+          margin: 0px;
+          font-weight: 500;
+          line-height: 2;
+          color: #333;
+        }
+
+        h1 {
+          text-align: center;
+          color: #666;
+          text-shadow: 1px 1px 0px #FFF;
+          margin: 50px 0px 0px 0px
+        }
+
+        input {
+          border-radius: 0px 5px 5px 0px;
+          border: 1px solid #eee;
+          margin-bottom: 15px;
+          width: 75%;
+          height: 40px;
+          float: left;
+          padding: 0px 15px;
+        }
+
+        a {
+          text-decoration: inherit
+        }
+
+        textarea {
+          border-radius: 0px 3px 3px 0px;
+          border: 1px solid #EEE;
+          margin: 0;
+          width: 75%;
+          height: 130px;
+          float: left;
+          padding: 0px 15px;
+        }
+
+        .form-group {
+          overflow: hidden;
+          clear: both;
+        }
+
+
+
+        i {
+          color: #555;
+        }
+
+        .contentform {
+          padding: 40px 30px;
+        }
+
+        .leftcontact {
+          width: 50%;
+          float: left;
+          border-right: 1px dotted #CCC;
+          box-sizing: border-box;
+          padding: 0px 15px 0px 0px;
+        }
+
+        .rightcontact {
+          width: 50%;
+          float: right;
+          box-sizing: border-box;
+          padding: 0px 0px 0px 15px;
+        }
+
+        .validation {
+          display: none;
+          margin: 0 0 10px;
+          font-weight: 400;
+          font-size: 13px;
+          color: #DE5959;
+        }
+      </style>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+      <script>(function () {
+          'use strict'
+
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.querySelectorAll('.needs-validation')
+
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()</script>
+</body>
+
+</html>
